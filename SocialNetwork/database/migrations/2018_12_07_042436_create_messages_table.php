@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
             $table->string('author');
             $table->text('content');
             $table->string('sendTo');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

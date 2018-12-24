@@ -1,8 +1,9 @@
-*,html{
+\*,html{
 	margin: 0;
 	padding: 0
 }
-body,label,h1,h2,h3,h4,h5,h6,p,a,strong,button,textarea,input{
+body,label,h1,h2,h3,h4,h5,h6,p,a,strong,button,textarea,
+input,input[type=text],span,tr,th,td,table{
 	font-family: 'Josefin Sans', sans-serif;
 }
 .main{
@@ -244,6 +245,7 @@ button{
 	height: 25px;
 	/*background-color: red;*/
 	padding: 0px 10px;
+	display: none;
 }
 .profile>form>.composer-form>.composer-form-wrapper>.composer-form-wrapper-send>input{
 	font-family: 'Josefin Sans', sans-serif;
@@ -276,20 +278,20 @@ button{
 	background-color: #ffffff;
 	cursor: pointer;
 }
-.profile>form>.composer-form>.composer-form-wrapper>.composer-form-wrapper-send>a>i:nth-child(1){
+.profile>form>.composer-form>.composer-form-wrapper>.composer-form-wrapper-textarea>a>i:nth-child(1){
 	font-size: 21px;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 8px;
+	right: 8px;
 	color: #606984;
 	display: block;
 	z-index: 999;
 }
-.profile>form>.composer-form>.composer-form-wrapper>.composer-form-wrapper-send>a>i:nth-child(2){
+.profile>form>.composer-form>.composer-form-wrapper>.composer-form-wrapper-textarea>a>i:nth-child(2){
 	font-size: 21px;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 8px;
+	right: 8px;
 	color: #606984;
 	display: none;
 	z-index: 999;
@@ -298,10 +300,11 @@ button{
 	width: 100%;
 	height: 105px!important;
 	padding: 5px;
+	position: relative;
 }
 .profile>form>.composer-form>.composer-form-wrapper>.composer-form-wrapper-textarea>textarea{
 	font-family: 'Josefin Sans', sans-serif;
-	width: 100%;
+	width: 89%;
 	display: block;
 	border: 0;
 	outline: 0;
@@ -429,7 +432,7 @@ html {
 
 }
 .nofication>.nofication-scrollable>article{
-	height: 88px;
+	min-height: 88px;
 	width: auto;
 	border-bottom: 1px solid rgb(57, 63, 79);
 	position:relative;
@@ -485,7 +488,16 @@ html {
 }
 .nofication>.nofication-scrollable>article>.nofication-reply>
 .nofication-status-content-action{
-	height: 20px;
+	min-height: 20px;
+	word-wrap: break-word;
+    font-weight: 400;
+    /*overflow: hidden;*/
+    text-overflow: ellipsis;
+    position: relative;
+}
+.nofication>.nofication-scrollable>article>.nofication-reply>
+.nofication-status-content-action>p{
+	margin-bottom: 5px!important;
 }
 .nofication>.nofication-scrollable>article>.nofication-reply>
 .nofication-status-content-action>p>span>a{
@@ -508,6 +520,12 @@ html {
 	width: 23px;
 	height: 23px;
 	padding-top: -10px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.nofication>.nofication-scrollable>article>.nofication-reply>
+.nofication-status-action-bar>.action-reply>i:hover{
+	color: #2b90d9!important;
 }
 .nofication>.nofication-scrollable>article>.nofication-reply>
 .nofication-status-action-bar>.action-reply>i{
@@ -515,6 +533,11 @@ html {
 	font-size: 15px;	
 	/*width: 23px;
 	height: 23px;*/
+}
+.nofication>.nofication-scrollable>article>.nofication-reply>
+.nofication-status-action-bar>.action-reply>span{
+	color: #bd2130e6;
+
 }
 .nofication>.nofication-scrollable>article>.nofication-reply>
 .nofication-status-action-bar>.action-retweet{
@@ -590,4 +613,358 @@ html {
 }
 .start>.getting-started>.getting-started-wrapper>a:hover{
 	background-color: #404657;
+}
+/*-------------------User TimeLine-------------------*/
+.nofication>.scrollable{
+	width: 100%;
+	height: 608px;
+	background-color: rgb(40, 44, 55);
+	background-attachment: scroll;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.nofication>.scrollable>.account-timeline-header{
+	height: 311px;
+	width: 100%;
+	position: relative;
+	display: block;
+	text-align: center;
+}
+.nofication>.scrollable>.account-timeline-header>.account-header{
+	background-color: rgb(49, 53, 67);
+	width: 100%;
+	height: 200px;
+}.nofication>.scrollable>.account-timeline-header>.account-header>div{
+	padding: 20px 10px;
+	width: 100%;
+	height: 160px;
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+a{
+	border-radius: 50%;
+	background-size: 90px 90px;
+    display: block;
+    height: 90px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    width: 90px;
+	background-image: url("../missing.png");
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+.account-header-display-name{
+	color: #ffffff;
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+.account-header-username{
+	color: #2b90d9;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+.account-header-button{
+	display: block;
+	font-size: 13px;
+	width: 33px;
+	height: 33px;
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+.account-header-button>button:hover{
+	color: #707b97;
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+.account-header-button>button{
+	color: #606984;
+	background-color: transparent
+}
+.nofication>.scrollable>.account-timeline-header>.account-header>div>
+.account-header-button>button>i{
+	font-size: 26px;
+	display: inline-block;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-bar{
+	width: 100%;
+	height: 60px;
+	border-top: 1px solid #393f4f;
+    border-bottom: 1px solid #393f4f;
+    /*line-height: 36px;*/
+    overflow: hidden;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-bar>
+.account-action-bar-tab{
+	text-decoration: none;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    border-right: 1px solid #393f4f;
+    border-bottom: 4px solid transparent;
+    width: 90px!important;
+    height: 60px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-bar>
+.account-action-bar-tab:nth-child(3){
+	border-right: none;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-bar>
+.account-action-bar-tab:focus{
+	border-bottom: 4px solid #2b90d9!important
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-bar>
+.account-action-bar-tab>span{
+	display: block;
+    /*text-transform: uppercase;*/
+    width: 100%;
+    height: 18px;
+    color: #9baec8;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-bar>
+.account-action-bar-tab>strong{
+	width: 100%;
+	height: 18px;
+	display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-information{
+	width: 100%;
+	height: 348px;
+	display: block;
+	position: relative;
+	/*padding: 10px!important;*/
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-information>
+div{
+	width: 100%;
+	height: 100%;
+	/*margin: 10px;*/
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-information>
+div>table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #ffffff;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-information>
+div>table>tr>th,td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #818182;
+  border-right: 1px solid #818182;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-information>
+div>table>tr>th,td:nth-child(2n){
+	border-right: none;
+	color: #ffffff!important;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-information>
+div>table>tr>th,td:nth-child(1n){
+	color: #2b90d9;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend{
+	width: 100%;
+	height: 348px;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article{
+	width: 100%;
+	height: 59px;
+	/*background-color: red;*/
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend{
+	width: 100%;
+	height: 59px;
+	padding: 10px;
+	border-bottom: 1px solid rgb(57, 63, 79);
+}
+
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	/*background-color: green;*/
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>a{
+	width: 258px;
+	/*background-color: yellow;*/
+	-webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: block;
+    color: #9baec8;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 14px;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>a>.account-friend-avatar-wrapper{
+	width: 36px;
+    height: 36px;
+	float: left;
+    margin-left: 12px;
+    margin-right: 12px;
+    /*background-color: white;*/
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>a>.account-friend-avatar-wrapper>
+.account-friend-avatar-wrapper-avatar{
+	border-radius: 4px;
+	width: 36px;
+    height: 36px;
+    background-size: 36px 36px;
+    /*background-color: orange;*/
+    background-image: url("../missing.png");
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>a>.account-friend-name{
+	display: block;
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    /*background-color: purple;*/
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>a>.account-friend-name>strong{
+	width: 100%;
+	height: 18px;
+	display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*background-color: red;*/
+    color: #ffffff;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>a>.account-friend-name>span{
+	height: 18px;
+	width: 100%;
+	font-size: 14px;
+	color: #9baec8;
+	/*background-color: white;*/
+	display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>.account-relationship{
+	height: 100%;
+	width: 38px;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>.account-relationship>button{
+	font-size: 18px;
+    width: 100%;
+    height: 100%;
+    line-height: 18px;
+    display: inline-block;
+    padding: 0;
+    color: #606984;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    -webkit-transition: color 100ms ease-in;
+    transition: color 100ms ease-in;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>.account-relationship>button>i{
+	width: 1.28571429em;
+    text-align: center;
+}
+.nofication>.scrollable>.account-timeline-header>.account-action-friend>
+article>.account-friend>.account-friend-wrapper>.account-relationship>button>i:hover{
+	color: #9baec8
+}
+/*---------------------google-map--------------------*/
+.nofication>.scrollable>.account-timeline-header>#map{
+	display: inline-block!important;
+	height: 100%;
+	width: 100%;
+}
+.gm-style-mtc{
+	display: none!important;
+}
+.gm-style-cc{
+	display: none!important;
+}
+.gm-style>div:nth-child(3){
+	display: none!important;
+}
+.gm-style-cc>div:nth-child(2)>span{
+	display: none!important;
+}
+.gmnoprint>div:nth-child(2)>a{
+	display: none!important;
+}
+.gm-style-cc>div:nth-child(1)>div:nth-child(2){
+	display: none!important;
+}
+.gm-svpc{
+	display: none!important;
+}
+.gmnoprint>div:nth-child(1){
+	background-color: #1b1e21!important;
+	height: 50px!important;
+	width: 30px!important;
+}
+.gmnoprint>div:nth-child(1)>button:nth-child(1){
+	background-color: #1b1e21!important;
+	height: 25px!important;
+	width: 30px!important
+}
+.gmnoprint>div:nth-child(1)>button:nth-child(1)>img{
+	height: 12px!important;
+	width: 12px!important
+}
+.gmnoprint>div:nth-child(1)>button:nth-child(3){
+	background-color: #1b1e21!important;
+	height: 25px!important;
+	width: 30px!important
+}
+.gmnoprint>div:nth-child(1)>button:nth-child(3)>img{
+	height: 12px!important;
+	width: 12px!important
+}
+.gmnoprint>div:nth-child(1)>div:nth-child(2){
+	height: 1px!important;
+	width: 20px!important
+}
+.gm-control-active{
+	background-color: #1b1e21!important;
+	height: 30px!important;
+	width: 30px!important
+}
+.icon-edit{
+	background-color: #dee2e6d9!important;
+	border: 2px solid #17a2b8!important
+}
+.input-edit{
+	background-color: #dee2e6!important;
+	border: 2px solid #17a2b8!important
 }

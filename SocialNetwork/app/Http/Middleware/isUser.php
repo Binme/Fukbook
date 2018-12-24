@@ -17,7 +17,7 @@ class isUser
     public function handle($request, Closure $next)
     {
         if(!Auth::check()) {
-            return redirect()->back()->with('flash_message', 'Bạn phai dang nhap');
+            return redirect('/')->with('flash_message', 'Bạn phai dang nhap');
         }
         return $next($request);
     }

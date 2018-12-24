@@ -27,4 +27,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function messages() {
+        return $this->hasMany('App\Messages','user_id','id');
+    }
+    public function notifications() {
+        return $this->hasMany('App\Notifications','user_id','id');
+    }
+    public function albums() {
+        return $this->hasMany('App\Album','user_id','id');
+    }
+    public function contact() {
+        return $this->hasOne('App\Contact','user_id','id');
+    }
+    public function map() {
+        return $this->hasOne('App\Maps','user_id','id');
+    }
 }

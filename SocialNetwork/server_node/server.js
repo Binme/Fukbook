@@ -12,14 +12,22 @@ redis.psubscribe("*",function(error,count){
 	//
 })
 io.on('get-message',function(data){
-	console.log("121313")
+	// console.log("121313")
 })
 redis.on('pmessage',function(partner,channel,message){
 	message = JSON.parse(message)
 	console.log(channel)
-	console.log(message.data.message.sendTo)
+	console.log(message)
 	console.log(partner)
 	
-	io.emit(channel+":"+message.event,message.data.message)
-	console.log('Sent')
+	if (channel == "notification") {
+		io.emit(channel+":"+message.event,message.data.notification)
+		return console.log('Sent Message <br>')
+	}else {
+		if (channel == "chat") {
+			io.emit(channel+":"+message.event,message.data.message)
+			return console.log('Sent Notification')
+		}
+		return console.log("Troi oi tin duoc khong")
+	}	
 })

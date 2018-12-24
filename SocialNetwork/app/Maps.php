@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Messages extends Model
+class Maps extends Model
 {
-    protected $table = "messages";
+    protected $table = "maps";
 
-    protected $fillable = ['author','content','sendTo','status'];
+    protected $fillable = ['lat','lng','user_id'];
 
     public function user(){
         return $this->belongsTo('App\User','user_id','id');

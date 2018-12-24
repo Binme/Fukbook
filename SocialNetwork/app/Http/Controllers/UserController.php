@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateSignInRequest;
 // use Illuminate\Support\Facades\Auth;
 use Auth;
+use App\Messages;
+use App\Notifications;
 
 class UserController extends Controller
 {
@@ -24,6 +26,8 @@ class UserController extends Controller
     }
     public function viewBody(){
         $user = Auth::user();
-        return view('body',compact('user'));
+        $messageTimeLines = Messages::where("sendTo","=","Local")->orderBy('created_at','DESC')->get();
+        $notifications = Notifications::where("sendTo","=",$user->name)->orderBy('created_at','DESC')->get();
+        return view('body',compact('user','messageTimeLines','notifications'));
     }
 }

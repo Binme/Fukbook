@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('send-message','RedisController@index');
-Route::post('send-message','RedisController@postSendMessage');
 
 Route::post('user/login','UserController@login');
 
@@ -32,6 +31,8 @@ Route::group(['middleware' => 'isUser','prefix' => 'user'],function() {
 });
 
 Route::group(['middleware' => 'isUser','prefix' => 'message'],function() {
+
+	Route::post('send-message','RedisController@postSendMessage');
 
 	Route::get('/getMessageByName','MessageController@getMessageByName');
 
